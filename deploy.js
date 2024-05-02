@@ -3,11 +3,11 @@ const ethers = require('ethers');
 const fs = require('fs-extra');
 async function main() {
   // Json Rpc Provider - Connecting to local blockchain
-  const provider = new ethers.providers.JsonRpcProvider('http://172.29.176.1:7545'); // add your rpc server url from Ganache
+  const provider = new ethers.providers.JsonRpcProvider('HTTP://172.29.176.1:7545'); // add your rpc server url from Ganache
 
   // Connect to wallet to sign transactions
   const wallet = new ethers.Wallet(
-    '0xd210f9d2cffc876501cd5d77bc90f07ac3a127bbbb0cd5855818bb94a8f3cf94',
+    '0xe8e6204363cf40b8d308d962e04d8fddec8f85c37ee7f21ec0cf3cd4e0d940a2',
     provider
   );
 
@@ -25,7 +25,7 @@ async function main() {
   console.log('Deploying, Please wait...');
   
   // Deploy and you are good to go
-  const contract = await contractFactory.deploy();
+  const contract = await contractFactory.deploy({gasPrice : 1000000000, gasLimit : 10000000000});
   console.log(contract);
 }
 
